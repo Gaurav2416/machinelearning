@@ -1,0 +1,537 @@
+
+R version 4.1.2 (2021-11-01) -- "Bird Hippie"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.77 (8007) aarch64-apple-darwin20]
+
+[Workspace restored from /Users/jayeshparsnani/.RData]
+[History restored from /Users/jayeshparsnani/.Rapp.history]
+
+> data <- read.csv("/Users/jayeshparsnani/Desktop/Section4chuvi/census1994.csv")
+> max(data$Age)
+[1] 90
+> 
+> min(data$Age)
+[1] 17
+> idx <- data == " ?"
+> is.na(data) <- idx
+> data <- na.omit(data)
+> nrow(data)
+[1] 30162
+> ncol(data)
+[1] 16
+> ax(data$Age)
+Error in ax(data$Age) : could not find function "ax"
+> 
+> min(data$Age)
+[1] 17
+> max(data$Age)
+[1] 90
+> y <- data$Age
+> quantile(y)
+  0%  25%  50%  75% 100% 
+  17   28   37   47   90 
+> 
+> unique(data$education.num)
+ [1] 13  9  7 14  5 10 12  4 16 11 15  3  6  1  8  2
+> 
+> unique(data$hours.per.week)
+ [1] 40 13 16 45 50 80 30 35 60 20 52 44 15 25 43 38 55 48 58 32 70 22 56 41 28
+[26] 36 24 46  2 42 12 65  1 34 75 98 33 54 10  6 64 19 18 72  8  9 47 37 21 26
+[51] 14  5  7 99 53 39 62 59 57 78 90 66 11 49 84 17 68  3 27 85 31 51 77 63 23
+[76]  4 87 88 73 89 97 94 29 96 67 82 86 91 81 76 92 61 74 95
+> summary(data)
+     Date                Age         WorkClass             fnlwgt       
+ Length:30162       Min.   :17.00   Length:30162       Min.   :  13769  
+ Class :character   1st Qu.:28.00   Class :character   1st Qu.: 117627  
+ Mode  :character   Median :37.00   Mode  :character   Median : 178425  
+                    Mean   :38.44                      Mean   : 189794  
+                    3rd Qu.:47.00                      3rd Qu.: 237628  
+                    Max.   :90.00                      Max.   :1484705  
+  education         education.num   marital.status      occupation       
+ Length:30162       Min.   : 1.00   Length:30162       Length:30162      
+ Class :character   1st Qu.: 9.00   Class :character   Class :character  
+ Mode  :character   Median :10.00   Mode  :character   Mode  :character  
+                    Mean   :10.12                                        
+                    3rd Qu.:13.00                                        
+                    Max.   :16.00                                        
+ relationship           race              gender           capital.gain  
+ Length:30162       Length:30162       Length:30162       Min.   :    0  
+ Class :character   Class :character   Class :character   1st Qu.:    0  
+ Mode  :character   Mode  :character   Mode  :character   Median :    0  
+                                                          Mean   : 1092  
+                                                          3rd Qu.:    0  
+                                                          Max.   :99999  
+  capital.loss     hours.per.week  native.country        class          
+ Min.   :   0.00   Min.   : 1.00   Length:30162       Length:30162      
+ 1st Qu.:   0.00   1st Qu.:40.00   Class :character   Class :character  
+ Median :   0.00   Median :40.00   Mode  :character   Mode  :character  
+ Mean   :  88.37   Mean   :40.93                                        
+ 3rd Qu.:   0.00   3rd Qu.:45.00                                        
+ Max.   :4356.00   Max.   :99.00                                        
+> sum_capital_gain_bachelors <- data.loc[data['education'] == ' Bachelors','capital-gain'].sum() 
+Error: unexpected symbol in "sum_capital_gain_bachelors <- data.loc[data['education'] == ' Bachelors','capital-gain'].sum"
+> sum_capitalgainbachelors <- data.loc[data['education'] == ' Bachelors','capital-gain'].sum()
+Error: unexpected symbol in "sum_capitalgainbachelors <- data.loc[data['education'] == ' Bachelors','capital-gain'].sum"
+> sum_capitalgainbachelors <- data.loc[data['education'] <- ' Bachelors','capital-gain'].sum()
+Error: unexpected symbol in "sum_capitalgainbachelors <- data.loc[data['education'] <- ' Bachelors','capital-gain'].sum"
+> sumcapitalgainbachelors <- data.loc[data['education'] == ' Bachelors','capital-gain'].sum()
+Error: unexpected symbol in "sumcapitalgainbachelors <- data.loc[data['education'] == ' Bachelors','capital-gain'].sum"
+> sumcapitalgainbachelors <- data.loc[data['education'] <- ' Bachelors','capital-gain'].sum()
+Error: unexpected symbol in "sumcapitalgainbachelors <- data.loc[data['education'] <- ' Bachelors','capital-gain'].sum"
+> sumcapitalgainbachelors <- data.loc[data['education'] <- ' Bachelors','capital-gain'].sum
+Error: unexpected symbol in "sumcapitalgainbachelors <- data.loc[data['education'] <- ' Bachelors','capital-gain'].sum"
+> sum_capital_gain_bachelors <-sum(group_by(data$capital-gain)) 
+Error in group_by(data$capital - gain) : 
+  could not find function "group_by"
+> sum_capital_gain_bachelors <-sum(group_by(data,capital-gain))
+Error in group_by(data, capital - gain) : 
+  could not find function "group_by"
+> library(dplyr)
+Error in library(dplyr) : there is no package called ‘dplyr’
+> install.packages("dplyr")
+--- Please select a CRAN mirror for use in this session ---
+Error in if (res > nrow(m)) { : argument is of length zero
+> install.packages("dplyr")
+--- Please select a CRAN mirror for use in this session ---
+also installing the dependencies ‘ellipsis’, ‘fansi’, ‘pkgconfig’, ‘purrr’, ‘cli’, ‘crayon’, ‘utf8’, ‘generics’, ‘glue’, ‘lifecycle’, ‘magrittr’, ‘R6’, ‘rlang’, ‘tibble’, ‘tidyselect’, ‘vctrs’, ‘pillar’
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/ellipsis_0.3.2.tgz'
+Content type 'application/octet-stream' length 38582 bytes (37 KB)
+==================================================
+downloaded 37 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/fansi_1.0.2.tgz'
+Content type 'application/octet-stream' length 380431 bytes (371 KB)
+==================================================
+downloaded 371 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/pkgconfig_2.0.3.tgz'
+Content type 'application/octet-stream' length 17807 bytes (17 KB)
+==================================================
+downloaded 17 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/purrr_0.3.4.tgz'
+Content type 'application/octet-stream' length 425227 bytes (415 KB)
+==================================================
+downloaded 415 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/cli_3.2.0.tgz'
+Content type 'application/octet-stream' length 1165968 bytes (1.1 MB)
+==================================================
+downloaded 1.1 MB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/crayon_1.5.0.tgz'
+Content type 'application/octet-stream' length 158534 bytes (154 KB)
+==================================================
+downloaded 154 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/utf8_1.2.2.tgz'
+Content type 'application/octet-stream' length 210684 bytes (205 KB)
+==================================================
+downloaded 205 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/generics_0.1.2.tgz'
+Content type 'application/octet-stream' length 77236 bytes (75 KB)
+==================================================
+downloaded 75 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/glue_1.6.1.tgz'
+Content type 'application/octet-stream' length 156147 bytes (152 KB)
+==================================================
+downloaded 152 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/lifecycle_1.0.1.tgz'
+Content type 'application/octet-stream' length 107918 bytes (105 KB)
+==================================================
+downloaded 105 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/magrittr_2.0.2.tgz'
+Content type 'application/octet-stream' length 231385 bytes (225 KB)
+==================================================
+downloaded 225 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/R6_2.5.1.tgz'
+Content type 'application/octet-stream' length 82585 bytes (80 KB)
+==================================================
+downloaded 80 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/rlang_1.0.1.tgz'
+Content type 'application/octet-stream' length 1798798 bytes (1.7 MB)
+==================================================
+downloaded 1.7 MB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/tibble_3.1.6.tgz'
+Content type 'application/octet-stream' length 851756 bytes (831 KB)
+==================================================
+downloaded 831 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/tidyselect_1.1.1.tgz'
+Content type 'application/octet-stream' length 200393 bytes (195 KB)
+==================================================
+downloaded 195 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/vctrs_0.3.8.tgz'
+Content type 'application/octet-stream' length 1450121 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/pillar_1.7.0.tgz'
+Content type 'application/octet-stream' length 744441 bytes (726 KB)
+==================================================
+downloaded 726 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/dplyr_1.0.8.tgz'
+Content type 'application/octet-stream' length 1317917 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+
+The downloaded binary packages are in
+	/var/folders/t8/tlr7dd6d5vvgpc808jlq1kgm0000gn/T//Rtmpsvh8Ab/downloaded_packages
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> sum_capital_gain_bachelors <-sum(group_by(data,capital-gain))
+Error in `group_by()`:
+! Problem adding computed columns.
+Caused by error in `mutate()`:
+! Problem while computing `..1 = capital - gain`.
+Caused by error:
+! object 'capital' not found
+Run `rlang::last_error()` to see where the error occurred.
+> install.packages("tidyr")
+also installing the dependency ‘cpp11’
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/cpp11_0.4.2.tgz'
+Content type 'application/octet-stream' length 305527 bytes (298 KB)
+==================================================
+downloaded 298 KB
+
+trying URL 'https://cran.microsoft.com/bin/macosx/big-sur-arm64/contrib/4.1/tidyr_1.2.0.tgz'
+Content type 'application/octet-stream' length 1022523 bytes (998 KB)
+==================================================
+downloaded 998 KB
+
+
+The downloaded binary packages are in
+	/var/folders/t8/tlr7dd6d5vvgpc808jlq1kgm0000gn/T//Rtmpsvh8Ab/downloaded_packages
+> library(tidyr)
+> sum_capital_gain_bachelors <-sum(group_by(data,capital-gain))
+Error in `group_by()`:
+! Problem adding computed columns.
+Caused by error in `mutate()`:
+! Problem while computing `..1 = capital - gain`.
+Caused by error:
+! object 'capital' not found
+Run `rlang::last_error()` to see where the error occurred.
+> sum_capital_gain_bachelors <-sumgroup_by(data,capital-gain)
+Error in sumgroup_by(data, capital - gain) : 
+  could not find function "sumgroup_by"
+> sum_capital_gain_bachelors <-group_by(data,capital-gain)
+Error in `group_by()`:
+! Problem adding computed columns.
+Caused by error in `mutate()`:
+! Problem while computing `..1 = capital - gain`.
+Caused by error:
+! object 'capital' not found
+Run `rlang::last_error()` to see where the error occurred.
+> sum_capital_gain_bachelors <-group_by(data,capital.gain)
+> print(sum_gain_bachelors)
+Error in print(sum_gain_bachelors) : 
+  object 'sum_gain_bachelors' not found
+> print(sum_capital_gain_bachelors)
+# A tibble: 30,162 × 16
+# Groups:   capital.gain [118]
+   Date         Age WorkClass           fnlwgt education    education.num marital.status           occupation           relationship     race    gender capital.gain capital.loss hours.per.week native.country class
+   <chr>      <int> <chr>                <int> <chr>                <int> <chr>                    <chr>                <chr>            <chr>   <chr>         <int>        <int>          <int> <chr>          <chr>
+ 1 3/20/1994     39 " State-gov"         77516 " Bachelors"            13 " Never-married"         " Adm-clerical"      " Not-in-family" " Whit… " Mal…         2174            0             40 " United-Stat… " <=…
+ 2 1/14/1994     50 " Self-emp-not-inc"  83311 " Bachelors"            13 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…            0            0             13 " United-Stat… " <=…
+ 3 8/14/1994     38 " Private"          215646 " HS-grad"               9 " Divorced"              " Handlers-cleaners" " Not-in-family" " Whit… " Mal…            0            0             40 " United-Stat… " <=…
+ 4 3/17/1994     53 " Private"          234721 " 11th"                  7 " Married-civ-spouse"    " Handlers-cleaners" " Husband"       " Blac… " Mal…            0            0             40 " United-Stat… " <=…
+ 5 9/20/1994     28 " Private"          338409 " Bachelors"            13 " Married-civ-spouse"    " Prof-specialty"    " Wife"          " Blac… " Fem…            0            0             40 " Cuba"        " <=…
+ 6 11/28/1994    37 " Private"          284582 " Masters"              14 " Married-civ-spouse"    " Exec-managerial"   " Wife"          " Whit… " Fem…            0            0             40 " United-Stat… " <=…
+ 7 3/2/1994      49 " Private"          160187 " 9th"                   5 " Married-spouse-absent" " Other-service"     " Not-in-family" " Blac… " Fem…            0            0             16 " Jamaica"     " <=…
+ 8 11/27/1994    52 " Self-emp-not-inc" 209642 " HS-grad"               9 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…            0            0             45 " United-Stat… " >5…
+ 9 12/25/1994    31 " Private"           45781 " Masters"              14 " Never-married"         " Prof-specialty"    " Not-in-family" " Whit… " Fem…        14084            0             50 " United-Stat… " >5…
+10 10/10/1994    42 " Private"          159449 " Bachelors"            13 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…         5178            0             40 " United-Stat… " >5…
+# … with 30,152 more rows
+> sum_capital_gain_bachelors <-group_by(data,education == Bachelors)
+Error in `group_by()`:
+! Problem adding computed columns.
+Caused by error in `mutate()`:
+! Problem while computing `..1 = education == Bachelors`.
+Caused by error:
+! object 'Bachelors' not found
+Run `rlang::last_error()` to see where the error occurred.
+> sum_capital_gain_bachelors <-group_by(data,education == "Bachelors")
+> print(sum_capital_gain_bachelors)
+# A tibble: 30,162 × 17
+# Groups:   education == "Bachelors" [1]
+   Date         Age WorkClass           fnlwgt education    education.num marital.status          occupation relationship race  gender capital.gain capital.loss hours.per.week native.country class `education == …`
+   <chr>      <int> <chr>                <int> <chr>                <int> <chr>                   <chr>      <chr>        <chr> <chr>         <int>        <int>          <int> <chr>          <chr> <lgl>           
+ 1 3/20/1994     39 " State-gov"         77516 " Bachelors"            13 " Never-married"        " Adm-cle… " Not-in-fa… " Wh… " Mal…         2174            0             40 " United-Stat… " <=… FALSE           
+ 2 1/14/1994     50 " Self-emp-not-inc"  83311 " Bachelors"            13 " Married-civ-spouse"   " Exec-ma… " Husband"   " Wh… " Mal…            0            0             13 " United-Stat… " <=… FALSE           
+ 3 8/14/1994     38 " Private"          215646 " HS-grad"               9 " Divorced"             " Handler… " Not-in-fa… " Wh… " Mal…            0            0             40 " United-Stat… " <=… FALSE           
+ 4 3/17/1994     53 " Private"          234721 " 11th"                  7 " Married-civ-spouse"   " Handler… " Husband"   " Bl… " Mal…            0            0             40 " United-Stat… " <=… FALSE           
+ 5 9/20/1994     28 " Private"          338409 " Bachelors"            13 " Married-civ-spouse"   " Prof-sp… " Wife"      " Bl… " Fem…            0            0             40 " Cuba"        " <=… FALSE           
+ 6 11/28/1994    37 " Private"          284582 " Masters"              14 " Married-civ-spouse"   " Exec-ma… " Wife"      " Wh… " Fem…            0            0             40 " United-Stat… " <=… FALSE           
+ 7 3/2/1994      49 " Private"          160187 " 9th"                   5 " Married-spouse-absen… " Other-s… " Not-in-fa… " Bl… " Fem…            0            0             16 " Jamaica"     " <=… FALSE           
+ 8 11/27/1994    52 " Self-emp-not-inc" 209642 " HS-grad"               9 " Married-civ-spouse"   " Exec-ma… " Husband"   " Wh… " Mal…            0            0             45 " United-Stat… " >5… FALSE           
+ 9 12/25/1994    31 " Private"           45781 " Masters"              14 " Never-married"        " Prof-sp… " Not-in-fa… " Wh… " Fem…        14084            0             50 " United-Stat… " >5… FALSE           
+10 10/10/1994    42 " Private"          159449 " Bachelors"            13 " Married-civ-spouse"   " Exec-ma… " Husband"   " Wh… " Mal…         5178            0             40 " United-Stat… " >5… FALSE           
+# … with 30,152 more rows
+> sum_capital_gain_bachelors <-group_by(data,education == "Bachelors", capital.gain)
+> print(sum_capital_gain_bachelors)
+# A tibble: 30,162 × 17
+# Groups:   education == "Bachelors", capital.gain [118]
+   Date         Age WorkClass           fnlwgt education    education.num marital.status          occupation relationship race  gender capital.gain capital.loss hours.per.week native.country class `education == …`
+   <chr>      <int> <chr>                <int> <chr>                <int> <chr>                   <chr>      <chr>        <chr> <chr>         <int>        <int>          <int> <chr>          <chr> <lgl>           
+ 1 3/20/1994     39 " State-gov"         77516 " Bachelors"            13 " Never-married"        " Adm-cle… " Not-in-fa… " Wh… " Mal…         2174            0             40 " United-Stat… " <=… FALSE           
+ 2 1/14/1994     50 " Self-emp-not-inc"  83311 " Bachelors"            13 " Married-civ-spouse"   " Exec-ma… " Husband"   " Wh… " Mal…            0            0             13 " United-Stat… " <=… FALSE           
+ 3 8/14/1994     38 " Private"          215646 " HS-grad"               9 " Divorced"             " Handler… " Not-in-fa… " Wh… " Mal…            0            0             40 " United-Stat… " <=… FALSE           
+ 4 3/17/1994     53 " Private"          234721 " 11th"                  7 " Married-civ-spouse"   " Handler… " Husband"   " Bl… " Mal…            0            0             40 " United-Stat… " <=… FALSE           
+ 5 9/20/1994     28 " Private"          338409 " Bachelors"            13 " Married-civ-spouse"   " Prof-sp… " Wife"      " Bl… " Fem…            0            0             40 " Cuba"        " <=… FALSE           
+ 6 11/28/1994    37 " Private"          284582 " Masters"              14 " Married-civ-spouse"   " Exec-ma… " Wife"      " Wh… " Fem…            0            0             40 " United-Stat… " <=… FALSE           
+ 7 3/2/1994      49 " Private"          160187 " 9th"                   5 " Married-spouse-absen… " Other-s… " Not-in-fa… " Bl… " Fem…            0            0             16 " Jamaica"     " <=… FALSE           
+ 8 11/27/1994    52 " Self-emp-not-inc" 209642 " HS-grad"               9 " Married-civ-spouse"   " Exec-ma… " Husband"   " Wh… " Mal…            0            0             45 " United-Stat… " >5… FALSE           
+ 9 12/25/1994    31 " Private"           45781 " Masters"              14 " Never-married"        " Prof-sp… " Not-in-fa… " Wh… " Fem…        14084            0             50 " United-Stat… " >5… FALSE           
+10 10/10/1994    42 " Private"          159449 " Bachelors"            13 " Married-civ-spouse"   " Exec-ma… " Husband"   " Wh… " Mal…         5178            0             40 " United-Stat… " >5… FALSE           
+# … with 30,152 more rows
+> sum_capital_gain_bachelors <-group_by(data,education, capital.gain)
+> print(sum_capital_gain_bachelors)
+# A tibble: 30,162 × 16
+# Groups:   education, capital.gain [548]
+   Date         Age WorkClass           fnlwgt education    education.num marital.status           occupation           relationship     race    gender capital.gain capital.loss hours.per.week native.country class
+   <chr>      <int> <chr>                <int> <chr>                <int> <chr>                    <chr>                <chr>            <chr>   <chr>         <int>        <int>          <int> <chr>          <chr>
+ 1 3/20/1994     39 " State-gov"         77516 " Bachelors"            13 " Never-married"         " Adm-clerical"      " Not-in-family" " Whit… " Mal…         2174            0             40 " United-Stat… " <=…
+ 2 1/14/1994     50 " Self-emp-not-inc"  83311 " Bachelors"            13 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…            0            0             13 " United-Stat… " <=…
+ 3 8/14/1994     38 " Private"          215646 " HS-grad"               9 " Divorced"              " Handlers-cleaners" " Not-in-family" " Whit… " Mal…            0            0             40 " United-Stat… " <=…
+ 4 3/17/1994     53 " Private"          234721 " 11th"                  7 " Married-civ-spouse"    " Handlers-cleaners" " Husband"       " Blac… " Mal…            0            0             40 " United-Stat… " <=…
+ 5 9/20/1994     28 " Private"          338409 " Bachelors"            13 " Married-civ-spouse"    " Prof-specialty"    " Wife"          " Blac… " Fem…            0            0             40 " Cuba"        " <=…
+ 6 11/28/1994    37 " Private"          284582 " Masters"              14 " Married-civ-spouse"    " Exec-managerial"   " Wife"          " Whit… " Fem…            0            0             40 " United-Stat… " <=…
+ 7 3/2/1994      49 " Private"          160187 " 9th"                   5 " Married-spouse-absent" " Other-service"     " Not-in-family" " Blac… " Fem…            0            0             16 " Jamaica"     " <=…
+ 8 11/27/1994    52 " Self-emp-not-inc" 209642 " HS-grad"               9 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…            0            0             45 " United-Stat… " >5…
+ 9 12/25/1994    31 " Private"           45781 " Masters"              14 " Never-married"         " Prof-specialty"    " Not-in-family" " Whit… " Fem…        14084            0             50 " United-Stat… " >5…
+10 10/10/1994    42 " Private"          159449 " Bachelors"            13 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…         5178            0             40 " United-Stat… " >5…
+# … with 30,152 more rows
+> data <- data(data, education),capital.gain(sum)
+Error: unexpected ',' in "data <- data(data, education),"
+> data <- data(data, .(education),capital.gain(sum))
+Warning messages:
+1: In data(data, .(education), capital.gain(sum)) :
+  data set ‘data’ not found
+2: In data(data, .(education), capital.gain(sum)) :
+  data set ‘.(education)’ not found
+3: In data(data, .(education), capital.gain(sum)) :
+  data set ‘capital.gain(sum)’ not found
+> nrow(data)
+NULL
+> nrow(sum_capital_gain_bachelors)
+[1] 30162
+> data <- sum_capital_gain_bachelors
+> data <- data(data, .(education),capital.gain(sum))
+Warning messages:
+1: In data(data, .(education), capital.gain(sum)) :
+  data set ‘data’ not found
+2: In data(data, .(education), capital.gain(sum)) :
+  data set ‘.(education)’ not found
+3: In data(data, .(education), capital.gain(sum)) :
+  data set ‘capital.gain(sum)’ not found
+> nrow(data)
+NULL
+> data <- data(data, .(education),sum(capital.gain))
+Warning messages:
+1: In data(data, .(education), sum(capital.gain)) :
+  data set ‘data’ not found
+2: In data(data, .(education), sum(capital.gain)) :
+  data set ‘.(education)’ not found
+3: In data(data, .(education), sum(capital.gain)) :
+  data set ‘sum(capital.gain)’ not found
+> data
+[1] "data"              ".(education)"      "sum(capital.gain)"
+> data <- sum_capital_gain_bachelors
+> data
+# A tibble: 30,162 × 16
+# Groups:   education, capital.gain [548]
+   Date         Age WorkClass           fnlwgt education    education.num marital.status           occupation           relationship     race    gender capital.gain capital.loss hours.per.week native.country class
+   <chr>      <int> <chr>                <int> <chr>                <int> <chr>                    <chr>                <chr>            <chr>   <chr>         <int>        <int>          <int> <chr>          <chr>
+ 1 3/20/1994     39 " State-gov"         77516 " Bachelors"            13 " Never-married"         " Adm-clerical"      " Not-in-family" " Whit… " Mal…         2174            0             40 " United-Stat… " <=…
+ 2 1/14/1994     50 " Self-emp-not-inc"  83311 " Bachelors"            13 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…            0            0             13 " United-Stat… " <=…
+ 3 8/14/1994     38 " Private"          215646 " HS-grad"               9 " Divorced"              " Handlers-cleaners" " Not-in-family" " Whit… " Mal…            0            0             40 " United-Stat… " <=…
+ 4 3/17/1994     53 " Private"          234721 " 11th"                  7 " Married-civ-spouse"    " Handlers-cleaners" " Husband"       " Blac… " Mal…            0            0             40 " United-Stat… " <=…
+ 5 9/20/1994     28 " Private"          338409 " Bachelors"            13 " Married-civ-spouse"    " Prof-specialty"    " Wife"          " Blac… " Fem…            0            0             40 " Cuba"        " <=…
+ 6 11/28/1994    37 " Private"          284582 " Masters"              14 " Married-civ-spouse"    " Exec-managerial"   " Wife"          " Whit… " Fem…            0            0             40 " United-Stat… " <=…
+ 7 3/2/1994      49 " Private"          160187 " 9th"                   5 " Married-spouse-absent" " Other-service"     " Not-in-family" " Blac… " Fem…            0            0             16 " Jamaica"     " <=…
+ 8 11/27/1994    52 " Self-emp-not-inc" 209642 " HS-grad"               9 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…            0            0             45 " United-Stat… " >5…
+ 9 12/25/1994    31 " Private"           45781 " Masters"              14 " Never-married"         " Prof-specialty"    " Not-in-family" " Whit… " Fem…        14084            0             50 " United-Stat… " >5…
+10 10/10/1994    42 " Private"          159449 " Bachelors"            13 " Married-civ-spouse"    " Exec-managerial"   " Husband"       " Whit… " Mal…         5178            0             40 " United-Stat… " >5…
+# … with 30,152 more rows
+> gruop = group_by(education, occupation)
+Error in group_by(education, occupation) : object 'education' not found
+> sum(data[which(data$education=='bachelors'), capital.gain])
+Error in `[.tbl_df`(data, which(data$education == "bachelors"), capital.gain) : 
+  object 'capital.gain' not found
+> sum(data[which(data$education=='bachelors'), 12])
+[1] 0
+> sum(data[which(data$education=='bachelors'), 11])
+[1] 0
+> sum(data[which(data$education=='bachelors'), 13])
+[1] 0
+> sum = data %>% groupby(education) %>% summarise(sum = sum(capital.gain))
+Error in groupby(., education) : could not find function "groupby"
+> sum = data %>% group_by(education) %>% summarise(sum = sum(capital.gain))
+> print(sum)
+# A tibble: 16 × 2
+   education           sum
+   <chr>             <int>
+ 1 " 10th"          324650
+ 2 " 11th"          227616
+ 3 " 12th"          100094
+ 4 " 1st-4th"        17205
+ 5 " 5th-6th"        48971
+ 6 " 7th-8th"       136300
+ 7 " 9th"           161206
+ 8 " Assoc-acdm"    559361
+ 9 " Assoc-voc"     963709
+10 " Bachelors"    8751485
+11 " Doctorate"    1886764
+12 " HS-grad"      5799557
+13 " Masters"      4155939
+14 " Preschool"      45818
+15 " Prof-school"  5816544
+16 " Some-college" 3941922
+> sum = data %>% group_by(education == bachelors) %>% summarise(sum = sum(capital.gain))
+Error in `group_by()`:
+! Problem adding computed columns.
+Caused by error in `mutate()`:
+! Problem while computing `..1 = education == bachelors`.
+Caused by error:
+! object 'bachelors' not found
+Run `rlang::last_error()` to see where the error occurred.
+> sum = data %>% group_by(education == Bachelors) %>% summarise(sum = sum(capital.gain))
+Error in `group_by()`:
+! Problem adding computed columns.
+Caused by error in `mutate()`:
+! Problem while computing `..1 = education == Bachelors`.
+Caused by error:
+! object 'Bachelors' not found
+Run `rlang::last_error()` to see where the error occurred.
+> sum = data %>% group_by(education == "Bachelors") %>% summarise(sum = sum(capital.gain))
+> print(sum)
+# A tibble: 1 × 2
+  `education == "Bachelors"`      sum
+  <lgl>                         <int>
+1 FALSE                      32937141
+> sum1 = data %>% group_by(education == "Bachelors") %>% summarise(sum = sum(capital.gain))
+> print(sum1)
+# A tibble: 1 × 2
+  `education == "Bachelors"`      sum
+  <lgl>                         <int>
+1 FALSE                      32937141
+> sum = data %>% group_by(education) %>% summarise(sum = sum(capital.gain))
+> print(sum1)
+# A tibble: 1 × 2
+  `education == "Bachelors"`      sum
+  <lgl>                         <int>
+1 FALSE                      32937141
+> print(sum)
+# A tibble: 16 × 2
+   education           sum
+   <chr>             <int>
+ 1 " 10th"          324650
+ 2 " 11th"          227616
+ 3 " 12th"          100094
+ 4 " 1st-4th"        17205
+ 5 " 5th-6th"        48971
+ 6 " 7th-8th"       136300
+ 7 " 9th"           161206
+ 8 " Assoc-acdm"    559361
+ 9 " Assoc-voc"     963709
+10 " Bachelors"    8751485
+11 " Doctorate"    1886764
+12 " HS-grad"      5799557
+13 " Masters"      4155939
+14 " Preschool"      45818
+15 " Prof-school"  5816544
+16 " Some-college" 3941922
+> sum1 = data %>% group_by(education == "Bachelors") %>% summarise(sum = sum(capital.gain))
+> print(sum1)
+# A tibble: 1 × 2
+  `education == "Bachelors"`      sum
+  <lgl>                         <int>
+1 FALSE                      32937141
+> sum1 = data %>% group_by(data$education == "Bachelors") %>% summarise(sum = sum(capital.gain))
+> print(sum1)
+# A tibble: 1 × 2
+  `data$education == "Bachelors"`      sum
+  <lgl>                              <int>
+1 FALSE                           32937141
+> sum = data %>% group_by(data$education == "Bachelors") %>% summarise(sum = sum(capital.gain))
+> print(sum)
+# A tibble: 1 × 2
+  `data$education == "Bachelors"`      sum
+  <lgl>                              <int>
+1 FALSE                           32937141
+> sum = data %>%data[data$education == "Bachelors"] %>% summarise(sum = sum(capital.gain))
+Error:
+! Must subset columns with a valid subscript vector.
+ℹ Logical subscripts must match the size of the indexed input.
+✖ Input has size 16 but subscript `j` has size 30162.
+Run `rlang::last_error()` to see where the error occurred.
+> data1 <- subset(data,education == "HS-grad")
+> 
+> sum = data1 %>% group_by(education) %>% summarise(sum = sum(capital.gain))
+> print(sum)
+# A tibble: 0 × 2
+# … with 2 variables: education <chr>, sum <int>
+> print(sum)
+# A tibble: 0 × 2
+# … with 2 variables: education <chr>, sum <int>
+> nrow(data1)
+[1] 0
+> data1 <- subset(data,education == "Bachelors")
+> nrow(data1)
+[1] 0
+> newdata <- data[ which(data$education=='Bachelors')]
+> nrow(newdata)
+[1] 30162
+> newdata <- subset(data, education == "Bachelors")
+> nrow(newdata)
+[1] 0
+> nrow(data)
+[1] 30162
+> newdata <- data[ which(data$education=='Bachelors'),]
+> nrow(newdata)
+[1] 0
+> newdata <- subset(data, education == Bachelors, select = c("education","capital.gain"))
+Error in eval(e, x, parent.frame()) : object 'Bachelors' not found
+> 
+> newdata <- subset(data, education == "Bachelors", select = c("education","capital.gain"))
+> nrow(newdata)
+[1] 0
+> 
